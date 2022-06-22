@@ -2,8 +2,11 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Navigation from "./components/Navigation";
+import RequireAuth from "./components/RequireAuth";
 import AdminPage from "./pages/AdminPage";
 import LoginPage from "./pages/LoginPage";
+import MatchesPage from "./pages/MatchesPage";
+import PlayersPage from "./pages/PlayersPage";
 
 const App = () => {
   return (
@@ -13,8 +16,22 @@ const App = () => {
         <Routes>
           <Route path="admin" element={<AdminPage />}>
             <Route index element={<LoginPage />} />
-            <Route path="matches" element={<div>matches page</div>} />
-            <Route path="players" element={<div>players page</div>} />
+            <Route
+              path="matches"
+              element={
+                <RequireAuth>
+                  <MatchesPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="players"
+              element={
+                <RequireAuth>
+                  <PlayersPage />
+                </RequireAuth>
+              }
+            />
           </Route>
           <Route path="*" element={<Navigate to="admin" replace />} />
         </Routes>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { LogoutIcon } from "@heroicons/react/outline";
 import { useSelector, useDispatch } from "react-redux";
