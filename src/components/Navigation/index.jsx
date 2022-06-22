@@ -11,6 +11,7 @@ const Navigation = () => {
   const dispatch = useDispatch();
 
   const onSignOutClick = () => {
+    localStorage.removeItem("accessToken");
     dispatch(logoutAdmin());
     navigate("/admin");
   };

@@ -29,6 +29,7 @@ const LoginPage = () => {
   const onFormSubmit = async (data) => {
     try {
       const payload = await login(data).unwrap();
+      localStorage.setItem("accessToken", payload.accessToken);
       dispatch(loginAdmin(payload.accessToken));
       navigate("/admin/matches");
     } catch (error) {
@@ -55,9 +56,9 @@ const LoginPage = () => {
               />
             )}
           />
-          {errors.username && (
+          {errors.id && (
             <Alert variant="danger" className="mt-2">
-              {errors.username.message}
+              {errors.id.message}
             </Alert>
           )}
         </div>
@@ -76,9 +77,9 @@ const LoginPage = () => {
               />
             )}
           />
-          {errors.password && (
+          {errors.secret && (
             <Alert variant="danger" className="mt-2">
-              {errors.password.message}
+              {errors.secret.message}
             </Alert>
           )}
         </div>

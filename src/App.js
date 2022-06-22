@@ -1,6 +1,7 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import { Route, Routes, Navigate } from "react-router-dom";
+import MatchCard from "./components/MatchCard";
 import Navigation from "./components/Navigation";
 import RequireAuth from "./components/RequireAuth";
 import AdminPage from "./pages/AdminPage";
@@ -23,7 +24,9 @@ const App = () => {
                   <MatchesPage />
                 </RequireAuth>
               }
-            />
+            >
+              <Route path=":matchId" element={<MatchCard />} />
+            </Route>
             <Route
               path="players"
               element={

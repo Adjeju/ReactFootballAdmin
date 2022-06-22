@@ -1,0 +1,13 @@
+.matches-list {
+  border: 1px solid gray;
+  height: 250px;
+  overflow-y: scroll;
+}
+
+.matches-list-item {
+  padding: 3px;
+}
+
+.matches-list-item:hover {
+  background-color: #e5e1e1;
+}
