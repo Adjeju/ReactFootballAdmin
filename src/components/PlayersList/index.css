@@ -1,14 +1,14 @@
-.matches-list {
+.players-list {
   border: 1px solid gray;
   max-height: 250px;
   overflow-y: scroll;
   margin-top: 5px;
 }
 
-.matches-list-item {
+.players-list-item {
   padding: 3px;
 }
 
-.matches-list-item:hover {
+.players-list-item:hover {
   background-color: #e5e1e1;
 }

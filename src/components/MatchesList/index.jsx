@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
 
@@ -18,7 +18,9 @@ const MatchesList = ({ searchQuery, matches, clearSearch }) => {
               label: `${scheduledStart} ${homeTeamName} vs. ${awayTeamName}`,
               matchId,
             }))
-            .filter(({ label }) => label.includes(searchQuery))
+            .filter(({ label }) =>
+              label.toLowerCase().includes(searchQuery.toLowerCase())
+            )
             .map(({ label, matchId }) => (
               <div
                 className="matches-list-item"

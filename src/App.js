@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import { Route, Routes, Navigate } from "react-router-dom";
 import MatchCard from "./components/MatchCard";
 import Navigation from "./components/Navigation";
+import PlayerCard from "./components/PlayerCard";
 import RequireAuth from "./components/RequireAuth";
 import AdminPage from "./pages/AdminPage";
 import LoginPage from "./pages/LoginPage";
@@ -34,7 +35,9 @@ const App = () => {
                   <PlayersPage />
                 </RequireAuth>
               }
-            />
+            >
+              <Route path=":playerId" element={<PlayerCard />} />
+            </Route>
           </Route>
           <Route path="*" element={<Navigate to="admin" replace />} />
         </Routes>
