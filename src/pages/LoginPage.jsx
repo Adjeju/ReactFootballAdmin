@@ -83,16 +83,24 @@ const LoginPage = () => {
             </Alert>
           )}
         </div>
-        <div className="d-flex align-items-center">
-          <Button
-            type="submit"
-            style={{ width: "80px" }}
-            className="mt-3"
-            variant="outline-light border text-dark"
-          >
-            Sign up
-          </Button>
-          {isLoading && <Spinner animation="border" role="status" />}
+        <div>
+          {!isLoading && (
+            <Button
+              type="submit"
+              style={{ width: "80px" }}
+              className="mt-3"
+              variant="outline-light border text-dark"
+            >
+              Sign up
+            </Button>
+          )}
+          {isLoading && (
+            <Spinner
+              className="d-block mx-auto mt-2"
+              animation="border"
+              role="status"
+            />
+          )}
         </div>
       </form>
       {error && (

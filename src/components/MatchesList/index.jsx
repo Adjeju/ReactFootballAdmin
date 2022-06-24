@@ -11,7 +11,7 @@ const MatchesList = ({ searchQuery, matches, clearSearch }) => {
   };
   return (
     <>
-      {searchQuery && (
+      {searchQuery.length >= 4 && (
         <div className="matches-list">
           {matches
             .map(({ awayTeamName, homeTeamName, scheduledStart, matchId }) => ({
