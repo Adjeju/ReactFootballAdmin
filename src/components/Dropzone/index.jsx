@@ -1,21 +1,67 @@
-import React from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";
+import { usePostPlayerImageMutation } from "../../api/playersApi";
+import { useNavigate } from "react-router-dom";
 
 import "./index.css";
 
-const Dropzone = () => {
-  const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
+const Dropzone = ({ playerId }) => {
+  const [files, setFiles] = useState([]);
+  const [postPlayerImage] = usePostPlayerImageMutation();
+  const navigate = useNavigate();
+
+  const imageFormData = useRef(new FormData());
+
+  const onDrop = useCallback((acceptedFiles) => {
+    imageFormData.current.append("file", acceptedFiles[0]);
+    setFiles(
+      acceptedFiles.map((file) =>
+        Object.assign(file, {
+          preview: URL.createObjectURL(file),
+        })
+      )
+    );
+    postPlayerImage({
+      id: playerId,
+      body: imageFormData.current,
+    });
+    window.location.reload();
+  }, []);
+
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: {
+      "image/jpg": [".jpg"],
+    },
+  });
+
+  const thumbs = files.map((file) => (
+    <div key={file.name}>
+      <img
+        className="dropzone-image"
+        key={file.name}
+        src={file.preview}
+        alt={file.name}
+      />
+    </div>
+  ));
 
   return (
-    <section className="dropzone">
-      <div {...getRootProps()}>
+    <div className="dropzone d-block mx-auto">
+      <div
+        {...getRootProps()}
+        className="h-100 d-flex text-center justify-content-center align-items-center"
+      >
         <input {...getInputProps()} />
-        <div className="text-center">
-          <div>Click to upload</div>
-          <div>new JPG</div>
-        </div>
+        {thumbs.length ? (
+          thumbs
+        ) : (
+          <div>
+            <div>Click to upload new JPG</div>
+          </div>
+        )}
       </div>
-    </section>
+    </div>
   );
 };
 export default Dropzone;

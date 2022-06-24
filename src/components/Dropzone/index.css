@@ -1,9 +1,11 @@
 .dropzone {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1 1 auto;
   border: 5px gray dashed;
   border-radius: 5px;
   margin-top: 15px;
+  height: 150px;
+}
+
+.dropzone-image {
+  width: 50%;
+  padding: 10px;
 }

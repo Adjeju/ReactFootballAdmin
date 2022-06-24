@@ -19,7 +19,12 @@ const Navigation = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand>Twelve</Navbar.Brand>
+        <Navbar.Brand className="d-flex align-items-center">
+          <img
+            src="https://dev1-web.twelve.football/images/menu-logo.png"
+            style={{ height: "25px" }}
+          />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

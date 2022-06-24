@@ -9,6 +9,7 @@ import AdminPage from "./pages/AdminPage";
 import LoginPage from "./pages/LoginPage";
 import MatchesPage from "./pages/MatchesPage";
 import PlayersPage from "./pages/PlayersPage";
+import IsAuthed from "./components/IsAuthed";
 
 const App = () => {
   return (
@@ -17,7 +18,14 @@ const App = () => {
       <Container className="py-2">
         <Routes>
           <Route path="admin" element={<AdminPage />}>
-            <Route index element={<LoginPage />} />
+            <Route
+              index
+              element={
+                <IsAuthed>
+                  <LoginPage />
+                </IsAuthed>
+              }
+            />
             <Route
               path="matches"
               element={
