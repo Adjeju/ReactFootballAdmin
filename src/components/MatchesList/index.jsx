@@ -10,9 +10,9 @@ const MatchesList = ({ searchQuery, matches, clearSearch }) => {
     clearSearch();
   };
   return (
-    <>
+    <div className="position-relative">
       {searchQuery.length >= 4 && (
-        <div className="matches-list">
+        <div className="matches-list bg-white container px-0">
           {matches
             .map(({ awayTeamName, homeTeamName, scheduledStart, matchId }) => ({
               label: `${scheduledStart} ${homeTeamName} vs. ${awayTeamName}`,
@@ -32,7 +32,7 @@ const MatchesList = ({ searchQuery, matches, clearSearch }) => {
             ))}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

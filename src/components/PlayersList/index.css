@@ -1,4 +1,6 @@
 .players-list {
+  position: absolute;
+  z-index: 9;
   border: 1px solid gray;
   max-height: 250px;
   overflow-y: scroll;
@@ -6,7 +8,7 @@
 }
 
 .players-list-item {
-  padding: 3px;
+  padding: 3px 10px;
 }
 
 .players-list-item:hover {

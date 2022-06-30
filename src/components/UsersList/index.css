@@ -1,4 +1,4 @@
-.matches-list {
+.users-list {
   position: absolute;
   z-index: 9;
   border: 1px solid gray;
@@ -7,10 +7,10 @@
   margin-top: 5px;
 }
 
-.matches-list-item {
+.users-list-item {
   padding: 3px 10px;
 }
 
-.matches-list-item:hover {
+.users-list-item:hover {
   background-color: #e5e1e1;
 }

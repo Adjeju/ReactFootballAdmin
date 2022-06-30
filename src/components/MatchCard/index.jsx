@@ -25,7 +25,10 @@ const MatchCard = () => {
         <div className="col-sm-9">
           <Form.Control className="form-control" placeholder="Enter title..." />
           <br />
-          <Form.Control className="form-control" placeholder="Enter title..." />
+          <Form.Control
+            className="form-control"
+            placeholder="Enter description..."
+          />
           <br />
           <Button className="float-end">Save</Button>
         </div>

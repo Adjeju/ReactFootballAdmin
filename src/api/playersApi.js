@@ -19,7 +19,6 @@ export const playersApi = createApi({
     }),
     postPlayerImage: builder.mutation({
       query: ({ id, body }) => {
-        console.log(id, body);
         return {
           url: `/${id}/image`,
           method: "POST",

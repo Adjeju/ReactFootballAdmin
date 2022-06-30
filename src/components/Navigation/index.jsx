@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { LogoutIcon } from "@heroicons/react/outline";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutAdmin } from "../../slices/authSlice";
+import { navLinks } from "../../utils/navLinks";
 
 const Navigation = () => {
   const navigate = useNavigate();
@@ -28,12 +29,11 @@ const Navigation = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Link className="nav-link" to="/admin/matches">
-              Matches
-            </Link>
-            <Link className="nav-link" to="/admin/players">
-              Players
-            </Link>
+            {navLinks.map(({ label, to }) => (
+              <Link className="nav-link" to={to} key={to}>
+                {label}
+              </Link>
+            ))}
           </Nav>
           {isAuthed && (
             <Nav onClick={onSignOutClick}>

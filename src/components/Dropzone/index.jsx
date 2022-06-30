@@ -8,11 +8,10 @@ import "./index.css";
 const Dropzone = ({ playerId }) => {
   const [files, setFiles] = useState([]);
   const [postPlayerImage] = usePostPlayerImageMutation();
-  const navigate = useNavigate();
 
   const imageFormData = useRef(new FormData());
 
-  const onDrop = useCallback((acceptedFiles) => {
+  const onDrop = useCallback(async (acceptedFiles) => {
     imageFormData.current.append("file", acceptedFiles[0]);
     setFiles(
       acceptedFiles.map((file) =>
@@ -21,11 +20,13 @@ const Dropzone = ({ playerId }) => {
         })
       )
     );
-    postPlayerImage({
+    const payload = await postPlayerImage({
       id: playerId,
       body: imageFormData.current,
     });
-    window.location.reload();
+    if (payload) {
+      window.location.reload();
+    }
   }, []);
 
   const { getRootProps, getInputProps } = useDropzone({

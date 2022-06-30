@@ -31,7 +31,7 @@ const LoginPage = () => {
       const payload = await login(data).unwrap();
       localStorage.setItem("accessToken", payload.accessToken);
       dispatch(loginAdmin(payload.accessToken));
-      navigate("/admin/matches");
+      // navigate("/admin/matches");
     } catch (error) {
       reset();
     }

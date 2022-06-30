@@ -5,11 +5,16 @@ import MatchCard from "./components/MatchCard";
 import Navigation from "./components/Navigation";
 import PlayerCard from "./components/PlayerCard";
 import RequireAuth from "./components/RequireAuth";
-import AdminPage from "./pages/AdminPage";
-import LoginPage from "./pages/LoginPage";
-import MatchesPage from "./pages/MatchesPage";
-import PlayersPage from "./pages/PlayersPage";
 import IsAuthed from "./components/IsAuthed";
+import UserInfo from "./components/UserInfo";
+import UsersTable from "./components/UsersTable";
+import {
+  AdminPage,
+  MatchesPage,
+  PlayersPage,
+  UsersPage,
+  LoginPage,
+} from "./pages";
 
 const App = () => {
   return (
@@ -45,6 +50,17 @@ const App = () => {
               }
             >
               <Route path=":playerId" element={<PlayerCard />} />
+            </Route>
+            <Route
+              path="users"
+              element={
+                <RequireAuth>
+                  <UsersPage />
+                </RequireAuth>
+              }
+            >
+              <Route path="" element={<UsersTable />} />
+              <Route path=":userId" element={<UserInfo />} />
             </Route>
           </Route>
           <Route path="*" element={<Navigate to="admin" replace />} />

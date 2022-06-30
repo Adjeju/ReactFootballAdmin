@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { useGetAllMatchesQuery } from "../api/matchesApi";
 import MatchesList from "../components/MatchesList";
 
 const MatchesPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const clearSearch = () => setSearchQuery("");
-  const { data } = useGetAllMatchesQuery();
+  const { data, error } = useGetAllMatchesQuery();
+
+  if (error?.status === 401) {
+    localStorage.removeItem("accessToken");
+    return <Navigate to="/admin" />;
+  }
+
   return (
     <div>
       <h1>Matches</h1>

@@ -10,9 +10,9 @@ const PlayersList = ({ searchQuery, players, clearSearch }) => {
     clearSearch();
   };
   return (
-    <>
+    <div className="position-relative">
       {searchQuery && (
-        <div className="players-list">
+        <div className="players-list bg-white container px-0">
           {players
             .filter(({ name }) =>
               name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -28,7 +28,7 @@ const PlayersList = ({ searchQuery, players, clearSearch }) => {
             ))}
         </div>
       )}
-    </>
+    </div>
   );
 };
 
